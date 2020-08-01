@@ -1,4 +1,4 @@
-package com.leehor.mvpmodule.Dipoable;
+package com.leehor.mvpmodule.Retrofit;
 
 import com.leehor.mvpmodule.base.IBaseView;
 
@@ -16,7 +16,7 @@ public class BaseModel {
             ob.subscribeOn(Schedulers.io())
                     .unsubscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .compose(iBaseView.<T>bindLifeycle())
+                    .compose(iBaseView.bindLifeycle())
                     .subscribe(callback);
         }
     }

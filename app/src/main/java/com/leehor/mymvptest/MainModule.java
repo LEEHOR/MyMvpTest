@@ -5,7 +5,7 @@ import com.leehor.mvpmodule.Dipoable.IObserver;
 import com.leehor.mvpmodule.Dipoable.OnRequestListener;
 import com.leehor.mvpmodule.Retrofit.ChangeRetrofitManager;
 import com.leehor.mvpmodule.base.BaseApi;
-import com.leehor.mvpmodule.Dipoable.BaseModel;
+import com.leehor.mvpmodule.Retrofit.BaseModel;
 import com.leehor.mvpmodule.base.BaseResponse;
 import com.leehor.mvpmodule.base.IBaseView;
 
