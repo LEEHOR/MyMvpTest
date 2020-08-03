@@ -36,6 +36,8 @@ dependencies {
 
     // Retrofit
     api 'com.squareup.retrofit2:retrofit:2.9.0'
+    //OKHttp日志优化策略
+    api 'com.squareup.okhttp3:logging-interceptor:3.10.0'
     // Retrofit和jxjava关联
     api 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
     // Retrofit使用Gson转换

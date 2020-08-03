@@ -26,9 +26,9 @@ public class RetrofitManager {
 
     //构造方法创建Retrofit实例
     private void initRetrofitManager() {
-        retrofit = new Retrofit.Builder().baseUrl("https://www.baidu.com/")
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
+        retrofit = new Retrofit.Builder().baseUrl("https://www.baidu.com/")//需要配置根路径
+                .addConverterFactory(GsonConverterFactory.create())//请求的结果转为实体类
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())//适配RxJava2.0
                 .build();
     }
 
