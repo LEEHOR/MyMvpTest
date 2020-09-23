@@ -20,16 +20,23 @@ public class SubscriptionManager implements SubscriptionHelper<Object> {
     }
 
     @Override
-    public void cancel(Disposable disposable) {
+    public void remove(Disposable disposable) {
         if (mDisposables != null) {
-            mDisposables.delete(disposable);
+            mDisposables.remove(disposable);
         }
     }
 
     @Override
-    public void cancelall() {
+    public void clearAll() {
         if (mDisposables != null) {
             mDisposables.clear();
+        }
+    }
+
+    @Override
+    public void delete(Disposable disposable) {
+        if (mDisposables != null) {
+            mDisposables.delete(disposable);
         }
     }
 

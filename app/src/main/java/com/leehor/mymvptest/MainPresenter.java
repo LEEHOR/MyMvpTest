@@ -1,6 +1,8 @@
 package com.leehor.mymvptest;
 
+import com.leehor.mvpmodule.Dipoable.BaseObserver;
 import com.leehor.mvpmodule.Dipoable.OnRequestListener;
+import com.leehor.mvpmodule.Retrofit.RxSchedulers;
 import com.leehor.mvpmodule.base.BaseResponse;
 
 public class MainPresenter extends MainContract.Presenter {
@@ -29,26 +31,29 @@ public class MainPresenter extends MainContract.Presenter {
             }
         },getView());
 
-        /*
-            方法2
-         */
-//        Observable<BaseResponse<TestBean>> gSxin = RetrofitManager.getSingleton().ApiService(MainApiServer.class).getGSxin();
-//        gSxin.compose(RxSchedulers.observableIO2Main())
-//                .subscribe(new BaseObserver<TestBean>() {
-//                    @Override
-//                    public void OnSuccess(BaseResponse<TestBean> t) {
-//
-//                    }
-//
-//                    @Override
-//                    public void OnFail() {
-//
-//                    }
-//
-//                    @Override
-//                    public void OnCompleted() {
-//
-//                    }
-//                });
+        MainModule.getInstance().MainRetrofit().getGSxin().compose(RxSchedulers.Obs_io_main())
+                .compose(getView().bindLifeycle())
+                .subscribe(new BaseObserver<BaseResponse<TestBean>>() {
+                    @Override
+                    public void OnDisposable() {
+
+                    }
+
+                    @Override
+                    public void OnSuccess(BaseResponse<TestBean> testBeanBaseResponse) {
+
+                    }
+
+                    @Override
+                    public void OnFail(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void OnCompleted() {
+
+                    }
+                });
+
     }
 }

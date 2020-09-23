@@ -3,6 +3,12 @@ package com.leehor.mvpmodule.Retrofit;
 
 
 
+import com.leehor.mvpmodule.base.IBaseView;
+
+import org.reactivestreams.Publisher;
+
+import io.reactivex.Flowable;
+import io.reactivex.FlowableTransformer;
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.ObservableTransformer;
@@ -17,13 +23,25 @@ import io.reactivex.schedulers.Schedulers;
 
 public class RxSchedulers {
 
-    public static <T> ObservableTransformer<T, T> observableIO2Main() {
-        return new ObservableTransformer<T, T>() {
-            @Override
-            public ObservableSource<T> apply(Observable<T> upstream) {
-                return upstream.subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread());
-            }
-        };
+    /**
+     * 统一线程处理
+     *
+     * @param <T> 指定的泛型类型
+     * @return FlowableTransformer
+     */
+    public static <T> FlowableTransformer< T, T> Flo_io_main() {
+        return upstream -> upstream.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    /**
+     * 统一线程处理
+     *
+     * @param <T> 指定的泛型类型
+     * @return ObservableTransformer
+     */
+    public static <T> ObservableTransformer<T, T> Obs_io_main() {
+        return upstream -> upstream.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
     }
 }

@@ -5,7 +5,9 @@ import io.reactivex.disposables.Disposable;
 public interface SubscriptionHelper<T> {
     void add(Disposable subscription);
 
-    void cancel(Disposable t);
+    void remove(Disposable t);
 
-    void cancelall();
+    void clearAll();
+
+    void delete(Disposable disposable);
 }
